@@ -1,36 +1,32 @@
+
+require "pry"
 class School 
-    attr_accessor :name, :roster 
+    attr_accessor :roster 
 
-def initialize(name)
-@name 
-@roster = {}
-end 
-
-def add_student(student, level)
-roster[level] ||= []
-roster[level] << student 
-
-end 
-
-def grade(level)
-    roster.detect do |x, y|
-    if x == level  
-        return y
+    def initialize(name)
+        @name = name
+        @roster = {}
     end 
-end 
-end 
 
-def sort
-    nu_hash = {} 
-    roster.each do |x, y|
-        nu_hash[x] = y.sort 
+    def add_student(name, grade)
+        if @roster[grade]
+            @roster[grade] << name 
+        else  @roster[grade] = []    
+            @roster[grade] << name 
+            end 
+        end
+    
+    def grade(grade)
+        @roster[grade]
+    end     
+
+    def sort
+        sorted = {}
+        @roster.each do |k, v| 
+            sorted[k] = v.sort  
+        end 
+        binding.pry 
+        sorted 
     end 
-    nu_hash 
-end 
-
-
-
-
-
-
+  
 end 
