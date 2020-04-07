@@ -25,7 +25,6 @@ class School
         @roster.each do |k, v| 
             sorted[k] = v.sort  
         end 
-        binding.pry 
         sorted 
     end 
   
